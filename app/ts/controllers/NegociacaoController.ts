@@ -1,8 +1,8 @@
 class NegociacaoController{
 
-    private _inputData;
-    private _inputQuantidade;
-    private _inputVaor;
+    private _inputData: Date;
+    private _inputQuantidade: Number;
+    private _inputVaor: Number;
 
     
     constructor(){
