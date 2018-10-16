@@ -4,6 +4,7 @@ class NegociacaoController{
     private _inputQuantidade: HTMLInputElement;
     private _inputVaor: HTMLInputElement;
     private _negociacoes = new Negociacoes();
+    private _negociacoesView = new NegociacoesView('#negociacoesView');
 
     
     constructor(){
@@ -11,6 +12,7 @@ class NegociacaoController{
         this._inputData = <HTMLInputElement> document.querySelector('#data');
         this._inputQuantidade = <HTMLInputElement> document.querySelector('#quantidade');
         this._inputVaor = <HTMLInputElement> document.querySelector('#valor');
+        this._negociacoesView.update();
 
     }
 
