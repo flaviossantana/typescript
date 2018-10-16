@@ -1,15 +1,15 @@
 class NegociacaoController{
 
-    private _inputData: Element;
-    private _inputQuantidade: Element;
-    private _inputVaor: Element;
+    private _inputData: HTMLInputElement;
+    private _inputQuantidade: HTMLInputElement;
+    private _inputVaor: HTMLInputElement;
 
     
     constructor(){
 
-        this._inputData = document.querySelector('#data');
-        this._inputQuantidade = document.querySelector('#quantidade');
-        this._inputVaor = document.querySelector('#valor');
+        this._inputData = <HTMLInputElement> document.querySelector('#data');
+        this._inputQuantidade = <HTMLInputElement> document.querySelector('#quantidade');
+        this._inputVaor = <HTMLInputElement> document.querySelector('#valor');
 
     }
 
