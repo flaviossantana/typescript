@@ -1,8 +1,8 @@
 class NegociacaoController{
 
-    private _inputData: Date;
-    private _inputQuantidade: Number;
-    private _inputVaor: Number;
+    private _inputData: Element;
+    private _inputQuantidade: Element;
+    private _inputVaor: Element;
 
     
     constructor(){
@@ -13,7 +13,7 @@ class NegociacaoController{
 
     }
 
-    adiciona(event) {
+    adiciona(event: Event) {
 
         event.preventDefault();
 
