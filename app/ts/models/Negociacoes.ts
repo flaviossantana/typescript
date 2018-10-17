@@ -1,5 +1,6 @@
 class Negociacoes {
 
+    //Bem Loko
     private _negociacoes: Array<Negociacao> = [];
 
 
