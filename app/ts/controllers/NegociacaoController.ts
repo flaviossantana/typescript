@@ -1,11 +1,16 @@
+import {Negociacoes} from "../models/Negociacoes";
+import {MensagemView} from "../views/MensagemView";
+import {NegociacoesView} from "../views/NegociacoesView";
+import {Negociacao} from "../models/Negociacao";
+
 class NegociacaoController{
 
     private _inputData: JQuery;
     private _inputQuantidade: JQuery;
     private _inputVaor: JQuery;
     private _negociacoes = new Negociacoes();
-    private _negociacoesView = new Views.NegociacoesView('#negociacoesView');
-    private _mensagemView = new Views.MensagemView('#mensagemView');
+    private _negociacoesView = new NegociacoesView('#negociacoesView');
+    private _mensagemView = new MensagemView('#mensagemView');
 
     
     constructor(){

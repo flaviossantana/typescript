@@ -1,4 +1,6 @@
-class Negociacoes {
+import {Negociacao} from "./Negociacao";
+
+export class Negociacoes {
 
     //Bem Loko
     private _negociacoes: Array<Negociacao> = [];
