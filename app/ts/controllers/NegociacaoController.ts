@@ -3,7 +3,7 @@ import {MensagemView} from "../views/MensagemView";
 import {NegociacoesView} from "../views/NegociacoesView";
 import {Negociacao} from "../models/Negociacao";
 
-class NegociacaoController{
+export class NegociacaoController{
 
     private _inputData: JQuery;
     private _inputQuantidade: JQuery;
