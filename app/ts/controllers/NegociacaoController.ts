@@ -33,6 +33,11 @@ export class NegociacaoController{
 
         this._negociacoes.adiciona(negociacao);
 
+        if(this._ehDiaUtil(negociacao.data)){
+            this._mensagemView.update('Somente negociações em dias úteis!');
+            return;
+        }
+
         this._negociacoes.paraArray().forEach(negociacao => {
             console.log(negociacao.data);
             console.log(negociacao.quantidade);
@@ -44,4 +49,17 @@ export class NegociacaoController{
 
     }
 
+    private _ehDiaUtil(data: Date): boolean {
+        return data.getDay() == DiasDaSemana.Domingo || data.getDay() == DiasDaSemana.Sabado;
+    }
+}
+
+enum DiasDaSemana {
+    Domingo,
+    Segunda,
+    Terca,
+    Quarta,
+    Quinta,
+    Sexta,
+    Sabado
 }
