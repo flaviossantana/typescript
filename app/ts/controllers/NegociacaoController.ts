@@ -1,5 +1,6 @@
 import {Negociacoes, Negociacao} from "../models/index";
 import {MensagemView, NegociacoesView} from "../views/index";
+import {logarTempoDeExecucao} from '../helpers/decorators/index';
 
 export class NegociacaoController{
 
@@ -20,6 +21,7 @@ export class NegociacaoController{
 
     }
 
+    @logarTempoDeExecucao()
     adiciona(event: Event) {
 
         let inicio = performance.now();
@@ -40,19 +42,8 @@ export class NegociacaoController{
             return;
         }
 
-        this._negociacoes.paraArray().forEach(negociacao => {
-            console.log(negociacao.data);
-            console.log(negociacao.quantidade);
-            console.log(negociacao.valor);
-        });
-
         this._negociacoesView.update(this._negociacoes);
         this._mensagemView.update('Negociação adicionada com sucesso!');
-
-        let fim = performance.now();
-
-        console.log(`Tempo de execução: ${fim - inicio} ms`);
-
     }
 
     private _ehDiaUtil(data: Date): boolean {
