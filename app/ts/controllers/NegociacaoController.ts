@@ -22,6 +22,8 @@ export class NegociacaoController{
 
     adiciona(event: Event) {
 
+        let inicio = performance.now();
+
         event.preventDefault();
 
         const negociacao = new Negociacao(
@@ -46,6 +48,10 @@ export class NegociacaoController{
 
         this._negociacoesView.update(this._negociacoes);
         this._mensagemView.update('Negociação adicionada com sucesso!');
+
+        let fim = performance.now();
+
+        console.log(`Tempo de execução: ${fim - inicio} ms`);
 
     }
 
