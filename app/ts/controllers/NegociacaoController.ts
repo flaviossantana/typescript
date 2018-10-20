@@ -1,24 +1,28 @@
 import {Negociacoes, Negociacao} from "../models/index";
 import {MensagemView, NegociacoesView} from "../views/index";
 import {logarTempoDeExecucao} from '../helpers/decorators/index';
+import {domInject} from "../helpers/decorators/domInject";
+import * as JQuery from "jquery";
 
 export class NegociacaoController{
 
+    @domInject('#data')
     private _inputData: JQuery;
+
+    @domInject('#quantidade')
     private _inputQuantidade: JQuery;
+
+    @domInject('#valor')
     private _inputVaor: JQuery;
+
     private _negociacoes = new Negociacoes();
+
     private _negociacoesView = new NegociacoesView('#negociacoesView', true);
+
     private _mensagemView = new MensagemView('#mensagemView', true);
 
-    
     constructor(){
-
-        this._inputData = $('#data');
-        this._inputQuantidade = $('#quantidade');
-        this._inputVaor = $('#valor');
         this._negociacoesView.update(this._negociacoes);
-
     }
 
     @logarTempoDeExecucao()
