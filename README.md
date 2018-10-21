@@ -16,5 +16,11 @@
 
 - `$ npm start` - Inciando Servidor (/alurabank)
 - `$ npm start` - Inciando Servidor api externa (/alurabank/api) 
+
+
+# Lembretes:
+
+`<link>` : <https://pandao.github.io/editor.md/en.html> 
+> Open source online Markdown editor.
  
 
