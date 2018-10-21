@@ -1,10 +1,9 @@
 import {Negociacoes, Negociacao, NegociacaoParcial} from "../models/index";
 import {MensagemView, NegociacoesView} from "../views/index";
-import {logarTempoDeExecucao} from '../helpers/decorators/index';
-import {domInject} from "../helpers/decorators/domInject";
+import {logarTempoDeExecucao, throttle, domInject} from '../helpers/decorators/index';
 import * as JQuery from "jquery";
 
-export class NegociacaoController{
+export class NegociacaoController {
 
     @domInject('#data')
     private _inputData: JQuery;
@@ -21,15 +20,16 @@ export class NegociacaoController{
 
     private _mensagemView = new MensagemView('#mensagemView', true);
 
-    constructor(){
+    constructor() {
         this._negociacoesView.update(this._negociacoes);
     }
 
-    importarDados(){
+    @throttle(500)
+    importarDados() {
 
-        function isOk(res: Response){
+        function isOk(res: Response) {
 
-            if(res.ok){
+            if (res.ok) {
                 return res;
             } else {
                 throw Error(res.statusText);
@@ -40,17 +40,17 @@ export class NegociacaoController{
             .then(res => isOk(res))
             .then(res => res.json())
             .then((dados: NegociacaoParcial[]) => {
-                    dados.map(dado =>
-                        new Negociacao(new Date(), dado.vezes, dado.montante))
-                        .forEach(negociacao => this._negociacoes.adiciona(negociacao));
+                dados.map(dado =>
+                    new Negociacao(new Date(), dado.vezes, dado.montante))
+                    .forEach(negociacao => this._negociacoes.adiciona(negociacao));
 
-                    this._negociacoesView.update(this._negociacoes);
+                this._negociacoesView.update(this._negociacoes);
             })
             .catch(err => console.log(err));
 
     }
 
-    @logarTempoDeExecucao()
+    @throttle(500)
     adiciona(event: Event) {
 
         let inicio = performance.now();
@@ -66,7 +66,7 @@ export class NegociacaoController{
 
         this._negociacoes.adiciona(negociacao);
 
-        if(this._ehDiaUtil(negociacao.data)){
+        if (this._ehDiaUtil(negociacao.data)) {
             this._mensagemView.update('Somente negociações em dias úteis!');
             return;
         }

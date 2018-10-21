@@ -1,4 +1,4 @@
-System.register(["../models/index", "../views/index", "../helpers/decorators/index", "../helpers/decorators/domInject"], function (exports_1, context_1) {
+System.register(["../models/index", "../views/index", "../helpers/decorators/index"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -7,7 +7,7 @@ System.register(["../models/index", "../views/index", "../helpers/decorators/ind
         return c > 3 && r && Object.defineProperty(target, key, r), r;
     };
     var __moduleName = context_1 && context_1.id;
-    var index_1, index_2, index_3, domInject_1, NegociacaoController, DiasDaSemana;
+    var index_1, index_2, index_3, NegociacaoController, DiasDaSemana;
     return {
         setters: [
             function (index_1_1) {
@@ -18,9 +18,6 @@ System.register(["../models/index", "../views/index", "../helpers/decorators/ind
             },
             function (index_3_1) {
                 index_3 = index_3_1;
-            },
-            function (domInject_1_1) {
-                domInject_1 = domInject_1_1;
             }
         ],
         execute: function () {
@@ -67,16 +64,19 @@ System.register(["../models/index", "../views/index", "../helpers/decorators/ind
                 }
             };
             __decorate([
-                domInject_1.domInject('#data')
+                index_3.domInject('#data')
             ], NegociacaoController.prototype, "_inputData", void 0);
             __decorate([
-                domInject_1.domInject('#quantidade')
+                index_3.domInject('#quantidade')
             ], NegociacaoController.prototype, "_inputQuantidade", void 0);
             __decorate([
-                domInject_1.domInject('#valor')
+                index_3.domInject('#valor')
             ], NegociacaoController.prototype, "_inputVaor", void 0);
             __decorate([
-                index_3.logarTempoDeExecucao()
+                index_3.throttle(500)
+            ], NegociacaoController.prototype, "importarDados", null);
+            __decorate([
+                index_3.throttle(500)
             ], NegociacaoController.prototype, "adiciona", null);
             exports_1("NegociacaoController", NegociacaoController);
             (function (DiasDaSemana) {
