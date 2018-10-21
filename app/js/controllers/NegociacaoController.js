@@ -31,6 +31,9 @@ System.register(["../models/index", "../views/index", "../helpers/decorators/ind
                     this._mensagemView = new index_2.MensagemView('#mensagemView', true);
                     this._negociacoesView.update(this._negociacoes);
                 }
+                importarDados() {
+                    alert('oi');
+                }
                 adiciona(event) {
                     let inicio = performance.now();
                     event.preventDefault();

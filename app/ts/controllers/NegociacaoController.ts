@@ -25,6 +25,10 @@ export class NegociacaoController{
         this._negociacoesView.update(this._negociacoes);
     }
 
+    importarDados(){
+        alert('oi');
+    }
+
     @logarTempoDeExecucao()
     adiciona(event: Event) {
 
