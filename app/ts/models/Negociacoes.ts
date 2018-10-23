@@ -1,6 +1,6 @@
-import {Imprimivel, Negociacao} from "./index";
+import {Igualavel, Imprimivel, Negociacao} from "./index";
 
-export class Negociacoes extends Imprimivel{
+export class Negociacoes implements Imprimivel{
 
     //Bem Loko
     private _negociacoes: Array<Negociacao> = [];
@@ -19,6 +19,10 @@ export class Negociacoes extends Imprimivel{
 
         console.log('[NEGOCIACOES]');
         console.log(JSON.stringify(this._negociacoes));
+    }
+
+    ehIgual(negociacoes: Negociacoes): boolean{
+        return JSON.stringify(this._negociacoes) == JSON.stringify(negociacoes.paraTexto());
     }
 
 }
