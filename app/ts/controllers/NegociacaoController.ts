@@ -3,6 +3,7 @@ import {MensagemView, NegociacoesView} from "../views/index";
 import {logarTempoDeExecucao, throttle, domInject} from '../helpers/decorators/index';
 import * as JQuery from "jquery";
 import {NegociacaoService} from "../service/NegociacaoService";
+import {imprime} from "../helpers/Utils";
 
 export class NegociacaoController {
 
@@ -75,6 +76,9 @@ export class NegociacaoController {
 
         this._negociacoesView.update(this._negociacoes);
         this._mensagemView.update('Negociação adicionada com sucesso!');
+
+        imprime(negociacao, this._negociacoes);
+
     }
 
     private _ehDiaUtil(data: Date): boolean {
