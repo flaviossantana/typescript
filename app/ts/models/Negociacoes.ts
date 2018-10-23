@@ -1,6 +1,6 @@
-import {Igualavel, Imprimivel, Negociacao} from "./index";
+import {Igualavel, Imprimivel, MeuObjeto, Negociacao} from "./index";
 
-export class Negociacoes implements Imprimivel{
+export class Negociacoes implements MeuObjeto<Negociacoes>{
 
     //Bem Loko
     private _negociacoes: Array<Negociacao> = [];
