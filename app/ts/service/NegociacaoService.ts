@@ -12,10 +12,10 @@ export class NegociacaoService {
                 dados.map(dado =>
                     new Negociacao(new Date(), dado.vezes, dado.montante))
             )
-            .catch(err => console.log(err));
-
+            .catch(err => {
+                throw new Error('Não foi possível importar as negociações!');
+            });
     }
-
 }
 
 export interface HandlerFunciton {
