@@ -1,12 +1,17 @@
-System.register([], function (exports_1, context_1) {
+System.register(["./index"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var Negociacoes;
+    var index_1, Negociacoes;
     return {
-        setters: [],
+        setters: [
+            function (index_1_1) {
+                index_1 = index_1_1;
+            }
+        ],
         execute: function () {
-            Negociacoes = class Negociacoes {
+            Negociacoes = class Negociacoes extends index_1.Imprimivel {
                 constructor() {
+                    super(...arguments);
                     this._negociacoes = [];
                 }
                 adiciona(negociacao) {
@@ -16,7 +21,7 @@ System.register([], function (exports_1, context_1) {
                     return [].concat(this._negociacoes);
                 }
                 paraTexto() {
-                    console.log('-- paraTexto --');
+                    console.log('[NEGOCIACOES]');
                     console.log(JSON.stringify(this._negociacoes));
                 }
             };

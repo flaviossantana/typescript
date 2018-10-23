@@ -1,6 +1,6 @@
-import {Negociacao} from "./Negociacao";
+import {Imprimivel, Negociacao} from "./index";
 
-export class Negociacoes {
+export class Negociacoes extends Imprimivel{
 
     //Bem Loko
     private _negociacoes: Array<Negociacao> = [];
@@ -17,7 +17,7 @@ export class Negociacoes {
 
     paraTexto(): void {
 
-        console.log('-- paraTexto --');
+        console.log('[NEGOCIACOES]');
         console.log(JSON.stringify(this._negociacoes));
     }
 

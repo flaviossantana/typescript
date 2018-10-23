@@ -1,4 +1,4 @@
-System.register(["../models/index", "../views/index", "../helpers/decorators/index", "../service/NegociacaoService"], function (exports_1, context_1) {
+System.register(["../models/index", "../views/index", "../helpers/decorators/index", "../service/NegociacaoService", "../helpers/Utils"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -7,7 +7,7 @@ System.register(["../models/index", "../views/index", "../helpers/decorators/ind
         return c > 3 && r && Object.defineProperty(target, key, r), r;
     };
     var __moduleName = context_1 && context_1.id;
-    var index_1, index_2, index_3, NegociacaoService_1, NegociacaoController, DiasDaSemana;
+    var index_1, index_2, index_3, NegociacaoService_1, Utils_1, NegociacaoController, DiasDaSemana;
     return {
         setters: [
             function (index_1_1) {
@@ -21,6 +21,9 @@ System.register(["../models/index", "../views/index", "../helpers/decorators/ind
             },
             function (NegociacaoService_1_1) {
                 NegociacaoService_1 = NegociacaoService_1_1;
+            },
+            function (Utils_1_1) {
+                Utils_1 = Utils_1_1;
             }
         ],
         execute: function () {
@@ -58,6 +61,7 @@ System.register(["../models/index", "../views/index", "../helpers/decorators/ind
                     }
                     this._negociacoesView.update(this._negociacoes);
                     this._mensagemView.update('Negociação adicionada com sucesso!');
+                    Utils_1.imprime(negociacao, this._negociacoes);
                 }
                 _ehDiaUtil(data) {
                     return data.getDay() == DiasDaSemana.Domingo || data.getDay() == DiasDaSemana.Sabado;
