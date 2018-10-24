@@ -28,37 +28,37 @@ export class NegociacaoController {
         this._negociacoesView.update(this._negociacoes);
     }
 
-    @throttle(500)
-    importarDados() {
+    @throttle()
+    async importaDados() {
 
-        function isOk(res: Response): Response {
+        try {
 
-            if (res.ok) {
-                return res;
-            } else {
-                throw Error(res.statusText);
-            }
+            const negociacoesParaImportar = await this._negociacaoService
+                .obterNegociacoes(res => {
+
+                    if (res.ok) {
+                        return res;
+                    } else {
+                        throw new Error(res.statusText);
+                    }
+                });
+
+            const negociacoesJaImportadas = this._negociacoes.paraArray();
+
+            negociacoesParaImportar
+                .filter(negociacao =>
+                    !negociacoesJaImportadas.some(jaImportada =>
+                        negociacao.ehIgual(jaImportada)))
+                .forEach(negociacao =>
+                    this._negociacoes.adiciona(negociacao));
+
+            this._negociacoesView.update(this._negociacoes);
+
+        } catch (err) {
+            this._mensagemView.update(err.message);
         }
-
-        this._negociacaoService.obterNegociacoes(isOk)
-            .then(negociacoesParaImportar => {
-
-                const negociacoesJaImportadas = this._negociacoes.paraArray();
-
-                negociacoesParaImportar
-                    .filter(negociacao =>
-                        !negociacoesJaImportadas.some(jaImportada =>
-                            negociacao.ehIgual(jaImportada)))
-                    .forEach(negociacao =>
-                            this._negociacoes.adiciona(negociacao) )
-
-                this._negociacoesView.update(this._negociacoes);
-            })
-            .catch(err => {
-              this._mensagemView.update(err.message)
-            });
-
     }
+
 
     @throttle(500)
     adiciona(event: Event) {
